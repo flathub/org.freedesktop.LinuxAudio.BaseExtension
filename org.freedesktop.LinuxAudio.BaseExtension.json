@@ -1,16 +1,16 @@
 {
   "id" : "org.freedesktop.LinuxAudio.BaseExtension",
-  "branch": "19.08",
+  "branch": "20.08",
   "runtime" : "org.freedesktop.Platform",
   "sdk" : "org.freedesktop.Sdk",
-  "runtime-version" : "19.08",
+  "runtime-version" : "20.08beta",
   "finish-args": [
     /* extensions */
-    "--env=LV2_PATH=/app/extensions/Plugins/lv2:/app/extensions/Lv2Plugins/lv2",
-    "--env=DSSI_PATH=/app/extensions/Plugins/dssi:/app/extensions/DssiPlugins/dssi",
-    "--env=LXVST_PATH=/app/extensions/Plugins/lxvst:/app/extensions/VstPlugins/lxvst",
-    "--env=VST3_PATH=/app/extensions/Plugins/vst3:/app/extensions/Vst3Plugins/vst3",
-    "--env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/extensions/LadspaPlugins/ladspa"
+    "--env=LV2_PATH=/app/extensions/Plugins/lv2",
+    "--env=DSSI_PATH=/app/extensions/Plugins/dssi",
+    "--env=LXVST_PATH=/app/extensions/Plugins/lxvst",
+    "--env=VST3_PATH=/app/extensions/Plugins/vst3",
+    "--env=LADSPA_PATH=/app/extensions/Plugins/ladspa"
   ],
   "add-extensions": {
     "org.freedesktop.LinuxAudio.Plugins": {
@@ -18,46 +18,6 @@
       "version": "19.08",
       "add-ld-path": "lib",
       "merge-dirs": "ladspa;dssi;lv2;lxvst;vst3",
-      "subdirectories": true,
-      "no-autodownload": true
-    },
-    "org.freedesktop.LinuxAudio.Lv2Plugins": {
-      "directory": "extensions/Lv2Plugins",
-      "version": "19.08",
-      "add-ld-path": "lib",
-      "merge-dirs": "lv2",
-      "subdirectories": true,
-      "no-autodownload": true
-    },
-    "org.freedesktop.LinuxAudio.DssiPlugins": {
-      "directory": "extensions/DssiPlugins",
-      "version": "19.08",
-      "add-ld-path": "lib",
-      "merge-dirs": "dssi",
-      "subdirectories": true,
-      "no-autodownload": true
-    },
-    "org.freedesktop.LinuxAudio.LadspaPlugins": {
-      "directory": "extensions/LadspaPlugins",
-      "version": "19.08",
-      "add-ld-path": "lib",
-      "merge-dirs": "ladspa",
-      "subdirectories": true,
-      "no-autodownload": true
-    },
-    "org.freedesktop.LinuxAudio.VstPlugins": {
-      "directory": "extensions/VstPlugins",
-      "version": "19.08",
-      "add-ld-path": "lib",
-      "merge-dirs": "lxvst",
-      "subdirectories": true,
-      "no-autodownload": true
-    },
-    "org.freedesktop.LinuxAudio.Vst3Plugins": {
-      "directory": "extensions/Vst3Plugins",
-      "version": "19.08",
-      "add-ld-path": "lib",
-      "merge-dirs": "vst3",
       "subdirectories": true,
       "no-autodownload": true
     }
@@ -71,12 +31,7 @@
         "install org.freedesktop.LinuxAudio.BaseExtension.appdata.xml ${DESTDIR}/app/share/appdata"
       ],
       "post-install": [
-        "install -d /app/extensions/Plugins",
-        "install -d /app/extensions/Lv2Plugins",
-        "install -d /app/extensions/LadspaPlugins",
-        "install -d /app/extensions/DssiPlugins",
-        "install -d /app/extensions/VstPlugins",
-        "install -d /app/extensions/Vst3Plugins"
+        "install -d /app/extensions/Plugins"
       ],
       "sources": [
         {

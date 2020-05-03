@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component>
+<component type="desktop">
   <id>org.freedesktop.LinuxAudio.BaseExtension</id>
   <metadata_license>CC0</metadata_license>
   <project_license>MIT</project_license>
   <name>Linux Audio BaseExtension</name>
   <summary>Shared platform for Linux Audio plugins</summary>
   <releases>
+    <release date="2020-07-15" version="20.08" />
     <release date="2020-07-01" version="19.08.1" />
     <release date="2020-04-19" version="19.08" />
   </releases>
