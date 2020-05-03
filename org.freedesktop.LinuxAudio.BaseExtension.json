@@ -69,7 +69,6 @@
         "install org.freedesktop.LinuxAudio.BaseExtension.appdata.xml ${DESTDIR}/app/share/appdata"
       ],
       "post-install": [
-        "install -d /app/extensions",
         "install -d /app/extensions/Lv2Plugins",
         "install -d /app/extensions/LadspaPlugins",
         "install -d /app/extensions/DssiPlugins",
