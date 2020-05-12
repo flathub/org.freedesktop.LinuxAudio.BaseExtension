@@ -21,7 +21,7 @@
       "add-ld-path": "lib",
       "merge-dirs": "lv2",
       "subdirectories": true,
-      "no-autodownload": true,
+      "no-autodownload": true
     },
     "org.freedesktop.LinuxAudio.DssiPlugins": {
       "directory": "extensions/DssiPlugins",
@@ -29,7 +29,7 @@
       "add-ld-path": "lib",
       "merge-dirs": "dssi",
       "subdirectories": true,
-      "no-autodownload": true,
+      "no-autodownload": true
     },
     "org.freedesktop.LinuxAudio.LadspaPlugins": {
       "directory": "extensions/LadspaPlugins",
@@ -37,7 +37,7 @@
       "add-ld-path": "lib",
       "merge-dirs": "ladspa",
       "subdirectories": true,
-      "no-autodownload": true,
+      "no-autodownload": true
     },
     "org.freedesktop.LinuxAudio.VstPlugins": {
       "directory": "extensions/VstPlugins",
@@ -45,7 +45,7 @@
       "add-ld-path": "lib",
       "merge-dirs": "lxvst",
       "subdirectories": true,
-      "no-autodownload": true,
+      "no-autodownload": true
     },
     "org.freedesktop.LinuxAudio.Vst3Plugins": {
       "directory": "extensions/Vst3Plugins",
@@ -53,7 +53,7 @@
       "add-ld-path": "lib",
       "merge-dirs": "vst3",
       "subdirectories": true,
-      "no-autodownload": true,
+      "no-autodownload": true
     }
   },
   "modules" : [
