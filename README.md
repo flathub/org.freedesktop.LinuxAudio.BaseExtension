@@ -1,8 +1,13 @@
 Linux Audio base extension
 ==========================
 
-This is a base extension for Flatpak Linux Audio app. The intent is
-to be the base for building Linux Audio plugins flatpaks.
+This is a base extension for Flatpak Linux audio plugins to allow
+building Linux audio plugins flatpaks.
+
+**This package only provides a definition of the extension points which
+are a prerequisite to build the plugins.** It doesn't provide anything
+else, and applications that want to use audio plugins do not need to
+use it. Just copy the extension point definitions to your manifest.
 
 It currently supports:
 
@@ -21,7 +26,7 @@ extension points.
 Application using audio plugins
 -------------------------------
 
-Your app support audio plugins?
+Your appication supports audio plugins?
 
 Add the extension points for plugins. Below is an example for LV2 plugins:
 
@@ -33,22 +38,12 @@ Add the extension points for plugins. Below is an example for LV2 plugins:
     "add-ld-path": "lib",
     "merge-dirs": "lv2",
     "subdirectories": true,
-    "no-autodownload": true,
-    "autodelete": true
+    "no-autodownload": true
   }
 }
 ```
 
-Change the `directory` (the mount point) for each kind of plugins.
-
-For DSSI and LADSPA change the key and the `merge-dirs` to respectively:
-
-For DSSI: `org.freedesktop.LinuxAudio.DssiPlugins` and `dssi`
-
-For LADSPA: `org.freedesktop.LinuxAudio.LadspaPlugins` and `ladspa`
-
-For Linux VST (ie VST compiled for Linux, not those running with
-Wine): `org.freedesktop.LinuxAudio.LadspaPlugins` and `lxvst`.
+The manifest of this flatpak has them all.
 
 And make sure the application find the LV2 plugins by putting the
 following finish argument:
@@ -57,13 +52,16 @@ following finish argument:
 "--env=LV2_PATH=/app/extensions/Lv2Plugins/lv2"
 ```
 
+The manifest of this flatpak has them all.
+
 For DSSI, LADSPA and VST it is the same change as above. It's actually
 recommended to add them all if you support LV2 as using a LV2 plugin
 like Carla, you can use the others formats.
 
-The table below list things. The mount point is a sub directory to
-`/app/extensions`. The subdir is a subdirectory in the mount point
-that will have all the plugins as needed by the application host.
+The table below summarie the mount point and environment to set. The
+mount point is a sub directory to `/app/extensions`. The subdir is a
+subdirectory in the mount point that will have all the plugins as
+needed by the application host.
 
 
 | Format     | Ext point name | mount point | subdir | env          |
@@ -74,6 +72,23 @@ that will have all the plugins as needed by the application host.
 | VST (Linux)| VstPlugins     | VstPlugins  | lxvst  | `LXVST_PATH` and `VST_PATH` |
 | VST3       | Vst3Plugins    | Vst3Plugins | vst3   | `VST3_PATH`  |
 
+
+Runtime considerations
+----------------------
+
+Currently the base runtime is Freedesktop 19.08. Plugins and
+applications have to use the same runtime so you should consider this
+when upgrading the runtime on your application flatpak.
+
+When moving to Freedestkop 20.08, branches will have to be created to
+keep the older versions of the plugins available. As an application
+you might want to consider when you want to do the upgrade.
+
+The `version` specified for the extension point of the application has
+to match the underlying freedesktop SDK it uses and plugins are built
+using the `branch` with the same name. This will allow transitioning
+to a new runtime without breaking applications using the older
+runtime.
 
 Plugins
 -------
@@ -88,11 +103,3 @@ VST: `org.freedesktop.LinuxAudio.VstPlugins`
 VST3: `org.freedesktop.LinuxAudio.Vst3Plugins`
 
 
-Versions
---------
-
-The `version` specified for the extension point of the application has
-to match the underlying freedesktop SDK it uses and plugins are built
-using the `branch` with the same name. This allow ensuring the
-extensions are tied to the runtime and allow transitioning to a new
-runtime.

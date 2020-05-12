@@ -21,7 +21,6 @@
       "merge-dirs": "lv2",
       "subdirectories": true,
       "no-autodownload": true,
-      "autodelete": true
     },
     "org.freedesktop.LinuxAudio.DssiPlugins": {
       "directory": "extensions/DssiPlugins",
@@ -30,7 +29,6 @@
       "merge-dirs": "dssi",
       "subdirectories": true,
       "no-autodownload": true,
-      "autodelete": true
     },
     "org.freedesktop.LinuxAudio.LadspaPlugins": {
       "directory": "extensions/LadspaPlugins",
@@ -39,7 +37,6 @@
       "merge-dirs": "ladspa",
       "subdirectories": true,
       "no-autodownload": true,
-      "autodelete": true
     },
     "org.freedesktop.LinuxAudio.VstPlugins": {
       "directory": "extensions/VstPlugins",
@@ -48,7 +45,6 @@
       "merge-dirs": "lxvst",
       "subdirectories": true,
       "no-autodownload": true,
-      "autodelete": true
     },
     "org.freedesktop.LinuxAudio.Vst3Plugins": {
       "directory": "extensions/Vst3Plugins",
@@ -57,7 +53,6 @@
       "merge-dirs": "vst3",
       "subdirectories": true,
       "no-autodownload": true,
-      "autodelete": true
     }
   },
   "modules" : [
