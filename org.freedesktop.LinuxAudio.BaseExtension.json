@@ -1,7 +1,7 @@
 {
   "id" : "org.freedesktop.LinuxAudio.BaseExtension",
   "branch": "19.08",
-  "default-branch": "19.08",
+  "default-branch": "stable",
   "runtime" : "org.freedesktop.Platform",
   "sdk" : "org.freedesktop.Sdk",
   "runtime-version" : "19.08",
