@@ -6,6 +6,7 @@
   <name>Linux Audio BaseExtension</name>
   <summary>Shared platform for Linux Audio plugins</summary>
   <releases>
+    <release date="2020-07-01" version="19.08.1" />
     <release date="2020-04-19" version="19.08" />
   </releases>
 </component>

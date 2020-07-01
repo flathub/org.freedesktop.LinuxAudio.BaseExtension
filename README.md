@@ -16,6 +16,10 @@ It currently supports:
 - LADSPA as a `org.freedesktop.LinuxAudio.LadspaPlugins` extension.
 - VST (Linux) as a `org.freedesktop.LinuxAudio.VstPlugins` extension.
 - VST3 as a `org.freedesktop.LinuxAudio.Vst3Plugins` extension.
+AND
+- All all the above as `org.freedesktop.LinuxAudio.Plugins` extension.
+
+The latter is the way forward, the former was a mistake.
 
 Content
 -------
@@ -26,9 +30,24 @@ extension points.
 Application using audio plugins
 -------------------------------
 
-Your appication supports audio plugins?
+Your application supports audio plugins?
 
-Add the extension points for plugins. Below is an example for LV2 plugins:
+Add the unified extension point for plugins:
+```
+"add-extensions": {
+  "org.freedesktop.LinuxAudio.Plugins": {
+    "directory": "extensions/Plugins",
+    "version": "19.08",
+    "add-ld-path": "lib",
+    "merge-dirs": "ladspa;dssi;lv2;lxvst;vst3",
+    "subdirectories": true,
+    "no-autodownload": true
+  }
+}
+```
+
+Add the extension points for the legacy plugins. Below is an example
+for LV2 plugins:
 
 ```
 "add-extensions": {
@@ -49,7 +68,7 @@ And make sure the application find the LV2 plugins by putting the
 following finish argument:
 
 ```
-"--env=LV2_PATH=/app/extensions/Lv2Plugins/lv2"
+"--env=LV2_PATH=/app/extensions/Plugins/lv2:/app/extensions/Lv2Plugins/lv2"
 ```
 
 The manifest of this flatpak has them all.
@@ -58,20 +77,19 @@ For DSSI, LADSPA and VST it is the same change as above. It's actually
 recommended to add them all if you support LV2 as using a LV2 plugin
 like Carla, you can use the others formats.
 
-The table below summarie the mount point and environment to set. The
-mount point is a sub directory to `/app/extensions`. The subdir is a
-subdirectory in the mount point that will have all the plugins as
-needed by the application host.
+The table below summarize the mount point and environment to set. The
+mount point is `/app/extensions/Plugins`. The subdir is a subdirectory
+in the mount point that will have all the plugins as needed by the
+application host.
 
 
-| Format     | Ext point name | mount point | subdir | env          |
-+------------+----------------+-------------+--------+--------------+
-| LV2        | Lv2Plugins     | Lv2Plugins  | lv2    | `LV2_PATH`   |
-| DSSI       | DssiPlugins    | DssiPlugins | dssi   | `DSSI_PATH`  |
-| LADSPA     | LadspaPlugins  | LaspaPlugins| ladspa | `LADSPA_PATH`|
-| VST (Linux)| VstPlugins     | VstPlugins  | lxvst  | `LXVST_PATH` and `VST_PATH` |
-| VST3       | Vst3Plugins    | Vst3Plugins | vst3   | `VST3_PATH`  |
-
+| Format     | subdir | env          |
++------------+--------+--------------+
+| LV2        | lv2    | `LV2_PATH`   |
+| DSSI       | dssi   | `DSSI_PATH`  |
+| LADSPA     | ladspa | `LADSPA_PATH`|
+| VST (Linux)| lxvst  | `LXVST_PATH` |
+| VST3       | vst3   | `VST3_PATH`  |
 
 Runtime considerations
 ----------------------
@@ -96,10 +114,4 @@ Plugins
 You want to provide a Plugin as a Flatpak package? Build a
 an extension, using the base app.
 
-LV2: `org.freedesktop.LinuxAudio.Lv2Plugins`
-DSSI: `org.freedesktop.LinuxAudio.DssiPlugins`
-LADSPA: `org.freedesktop.LinuxAudio.LadspaPlugins`
-VST: `org.freedesktop.LinuxAudio.VstPlugins`
-VST3: `org.freedesktop.LinuxAudio.Vst3Plugins`
-
-
+`org.freedesktop.LinuxAudio.Plugins`
