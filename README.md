@@ -12,10 +12,10 @@ use it. Just copy the extension point definitions to your manifest.
 It currently supports:
 
 - LV2 as a `org.freedesktop.LinuxAudio.Lv2Plugins` extension.
-- DSSI as a `org.freedesktop.LinuxAudio.DssiPlugins` extension.
 - LADSPA as a `org.freedesktop.LinuxAudio.LadspaPlugins` extension.
 - VST (Linux) as a `org.freedesktop.LinuxAudio.VstPlugins` extension.
-- VST3 as a `org.freedesktop.LinuxAudio.Vst3Plugins` extension.
+- DSSI
+- VST3
 AND
 - All all the above as `org.freedesktop.LinuxAudio.Plugins` extension.
 
@@ -88,7 +88,7 @@ application host.
 | LV2        | lv2    | `LV2_PATH`   |
 | DSSI       | dssi   | `DSSI_PATH`  |
 | LADSPA     | ladspa | `LADSPA_PATH`|
-| VST (Linux)| lxvst  | `LXVST_PATH` |
+| VST (Linux)| lxvst  | `LXVST_PATH` or `VST_PATH` |
 | VST3       | vst3   | `VST3_PATH`  |
 
 Runtime considerations
