@@ -11,12 +11,11 @@ use it. Just copy the extension point definitions to your manifest.
 
 It currently supports:
 
-- LV2 as a `org.freedesktop.LinuxAudio.Lv2Plugins` extension.
-- DSSI as a `org.freedesktop.LinuxAudio.DssiPlugins` extension.
-- LADSPA as a `org.freedesktop.LinuxAudio.LadspaPlugins` extension.
-- VST (Linux) as a `org.freedesktop.LinuxAudio.VstPlugins` extension.
-- VST3 as a `org.freedesktop.LinuxAudio.Vst3Plugins` extension.
-AND
+- LV2  extension.
+- LADSPA extension.
+- VST (Linux) extension.
+- DSSI
+- VST3
 - All all the above as `org.freedesktop.LinuxAudio.Plugins` extension.
 
 The latter is the way forward, the former was a mistake.
@@ -46,29 +45,13 @@ Add the unified extension point for plugins:
 }
 ```
 
-Add the extension points for the legacy plugins. Below is an example
-for LV2 plugins:
-
-```
-"add-extensions": {
-  "org.freedesktop.LinuxAudio.Lv2Plugins": {
-    "directory": "extensions/Lv2Plugins",
-    "version": "19.08",
-    "add-ld-path": "lib",
-    "merge-dirs": "lv2",
-    "subdirectories": true,
-    "no-autodownload": true
-  }
-}
-```
-
 The manifest of this flatpak has them all.
 
 And make sure the application find the LV2 plugins by putting the
 following finish argument:
 
 ```
-"--env=LV2_PATH=/app/extensions/Plugins/lv2:/app/extensions/Lv2Plugins/lv2"
+"--env=LV2_PATH=/app/extensions/Plugins/lv2"
 ```
 
 The manifest of this flatpak has them all.
@@ -88,19 +71,20 @@ application host.
 | LV2        | lv2    | `LV2_PATH`   |
 | DSSI       | dssi   | `DSSI_PATH`  |
 | LADSPA     | ladspa | `LADSPA_PATH`|
-| VST (Linux)| lxvst  | `LXVST_PATH` |
+| VST (Linux)| lxvst  | `LXVST_PATH` or `VST_PATH` |
 | VST3       | vst3   | `VST3_PATH`  |
 
 Runtime considerations
 ----------------------
 
-Currently the base runtime is Freedesktop 19.08. Plugins and
+Currently the base runtime is Freedesktop 19.08 or 20.08. Plugins and
 applications have to use the same runtime so you should consider this
 when upgrading the runtime on your application flatpak.
 
-When moving to Freedestkop 20.08, branches will have to be created to
-keep the older versions of the plugins available. As an application
-you might want to consider when you want to do the upgrade.
+When moving to a more recent Freedestkop, branches will have to be
+created to keep the older versions of the plugins available. As an
+application you might want to consider when you want to do the
+upgrade.
 
 The `version` specified for the extension point of the application has
 to match the underlying freedesktop SDK it uses and plugins are built
