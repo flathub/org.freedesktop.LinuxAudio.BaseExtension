@@ -15,6 +15,11 @@
   <content_rating type="oars-1.1" />
   <url type="homepage">https://github.com/flathub/org.freedesktop.LinuxAudio.BaseExtension</url>
   <releases>
+    <release date="2020-10-12" version="19.08.3">
+      <description>
+        <p>Removed legacy LV2 and LADSPA</p>
+      </description>
+    </release>
     <release date="2020-07-15" version="19.08.2">
       <description>
         <p>Removed legacy DSSI and VST3</p>
