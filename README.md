@@ -11,15 +11,13 @@ use it. Just copy the extension point definitions to your manifest.
 
 It currently supports:
 
-- LV2 as a `org.freedesktop.LinuxAudio.Lv2Plugins` extension.
-- LADSPA as a `org.freedesktop.LinuxAudio.LadspaPlugins` extension.
-- VST (Linux) as a `org.freedesktop.LinuxAudio.VstPlugins` extension.
+- LV2
+- LADSPA
+- VST
 - DSSI
 - VST3
-AND
-- All all the above as `org.freedesktop.LinuxAudio.Plugins` extension.
 
-The latter is the way forward, the former was a mistake.
+as `org.freedesktop.LinuxAudio.Plugins` extension.
 
 Content
 -------
@@ -46,29 +44,11 @@ Add the unified extension point for plugins:
 }
 ```
 
-Add the extension points for the legacy plugins. Below is an example
-for LV2 plugins:
-
-```
-"add-extensions": {
-  "org.freedesktop.LinuxAudio.Lv2Plugins": {
-    "directory": "extensions/Lv2Plugins",
-    "version": "19.08",
-    "add-ld-path": "lib",
-    "merge-dirs": "lv2",
-    "subdirectories": true,
-    "no-autodownload": true
-  }
-}
-```
-
-The manifest of this flatpak has them all.
-
 And make sure the application find the LV2 plugins by putting the
 following finish argument:
 
 ```
-"--env=LV2_PATH=/app/extensions/Plugins/lv2:/app/extensions/Lv2Plugins/lv2"
+"--env=LV2_PATH=/app/extensions/Plugins/lv2"
 ```
 
 The manifest of this flatpak has them all.
