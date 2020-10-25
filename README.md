@@ -16,9 +16,10 @@ It currently supports:
 - VST (Linux) extension.
 - DSSI
 - VST3
-- All all the above as `org.freedesktop.LinuxAudio.Plugins` extension.
 
-The latter is the way forward, the former was a mistake.
+All the above uses `org.freedesktop.LinuxAudio.Plugins` extension mount
+point.
+
 
 Content
 -------
@@ -36,7 +37,7 @@ Add the unified extension point for plugins:
 "add-extensions": {
   "org.freedesktop.LinuxAudio.Plugins": {
     "directory": "extensions/Plugins",
-    "version": "19.08",
+    "version": "20.08",
     "add-ld-path": "lib",
     "merge-dirs": "ladspa;dssi;lv2;lxvst;vst3",
     "subdirectories": true,
@@ -47,18 +48,15 @@ Add the unified extension point for plugins:
 
 The manifest of this flatpak has them all.
 
-And make sure the application find the LV2 plugins by putting the
-following finish argument:
+Also make sure the application find the plugins. As an example to find
+LV2 put the following finish argument:
 
 ```
 "--env=LV2_PATH=/app/extensions/Plugins/lv2"
 ```
 
-The manifest of this flatpak has them all.
-
-For DSSI, LADSPA and VST it is the same change as above. It's actually
-recommended to add them all if you support LV2 as using a LV2 plugin
-like Carla, you can use the others formats.
+For DSSI, LADSPA, VST and VST3 it is the same change as above, see the
+table below for a summary.
 
 The table below summarize the mount point and environment to set. The
 mount point is `/app/extensions/Plugins`. The subdir is a subdirectory
@@ -81,6 +79,8 @@ Currently the base runtime is Freedesktop 19.08 or 20.08. Plugins and
 applications have to use the same runtime so you should consider this
 when upgrading the runtime on your application flatpak.
 
+As of writing 19.08 is in maintenance mode.
+
 When moving to a more recent Freedestkop, branches will have to be
 created to keep the older versions of the plugins available. As an
 application you might want to consider when you want to do the
@@ -98,4 +98,4 @@ Plugins
 You want to provide a Plugin as a Flatpak package? Build a
 an extension, using the base app.
 
-`org.freedesktop.LinuxAudio.Plugins`
+`org.freedesktop.LinuxAudio.Plugins` is the base id for the plugin.
