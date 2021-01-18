@@ -26,18 +26,8 @@
     {
       "name": "polish",
       "buildsystem": "simple",
-      "build-commands": [
-        "mkdir -p ${DESTDIR}/app/share/appdata",
-        "install org.freedesktop.LinuxAudio.BaseExtension.appdata.xml ${DESTDIR}/app/share/appdata"
-      ],
       "post-install": [
         "install -d /app/extensions/Plugins"
-      ],
-      "sources": [
-        {
-          "type": "file",
-          "path": "org.freedesktop.LinuxAudio.BaseExtension.appdata.xml"
-        }
       ]
     }
   ]
