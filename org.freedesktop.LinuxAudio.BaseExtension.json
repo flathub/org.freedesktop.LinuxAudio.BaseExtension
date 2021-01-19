@@ -25,6 +25,7 @@
   "modules" : [
     {
       "name": "polish",
+      "buildsystem": "simple",
       "post-install": [
         "install -d /app/extensions/Plugins"
       ]
