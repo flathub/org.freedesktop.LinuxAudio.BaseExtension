@@ -75,11 +75,11 @@ VST3       | vst3   | `VST3_PATH`
 Runtime considerations
 ----------------------
 
-Currently the base runtime is Freedesktop 19.08 or 20.08. Plugins and
+Currently the base runtime is Freedesktop 20.08. Plugins and
 applications have to use the same runtime so you should consider this
 when upgrading the runtime on your application flatpak.
 
-As of writing 19.08 is in maintenance mode.
+As of writing 19.08 is deprecated.
 
 When moving to a more recent Freedestkop, branches will have to be
 created to keep the older versions of the plugins available. As an
