@@ -37,7 +37,7 @@ Add the unified extension point for plugins:
 "add-extensions": {
   "org.freedesktop.LinuxAudio.Plugins": {
     "directory": "extensions/Plugins",
-    "version": "20.08",
+    "version": "21.08",
     "add-ld-path": "lib",
     "merge-dirs": "ladspa;dssi;lv2;lxvst;vst3",
     "subdirectories": true,
