@@ -62,15 +62,15 @@ mount point is `/app/extensions/Plugins`. The subdir is a subdirectory
 in the mount point that will have all the plugins as needed by the
 application host.
 
-```
+
 | Format     | subdir | env          |
-+------------+--------+--------------+
+|------------|--------|--------------|
 | LV2        | lv2    | `LV2_PATH`   |
 | DSSI       | dssi   | `DSSI_PATH`  |
 | LADSPA     | ladspa | `LADSPA_PATH`|
 | VST (Linux)| lxvst  | `LXVST_PATH` or `VST_PATH` |
 | VST3       | vst3   | `VST3_PATH`  |
-```
+
 Runtime considerations
 ----------------------
 
