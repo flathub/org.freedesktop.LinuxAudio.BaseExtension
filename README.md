@@ -52,11 +52,18 @@ Also make sure the application find the plugins. As an example to find
 LV2 put the following finish argument:
 
 ```
-"--env=LV2_PATH=/app/extensions/Plugins/lv2"
+"--env=LV2_PATH=$HOME/.lv2:/app/extensions/Plugins/lv2"
 ```
 
 For DSSI, LADSPA, VST and VST3 it is the same change as above, see the
 table below for a summary.
+
+```
+"--env=DSSI_PATH=/app/extensions/Plugins/lv2"
+"--env=LADSPA_PATH=/app/extensions/Plugins/lv2"
+"--env=VST_PATH=/app/extensions/Plugins/lxvst"
+"--env=VST3_PATH=$HOME/.vst3:/app/extensions/Plugins/vst3"
+```
 
 The table below summarize the mount point and environment to set. The
 mount point is `/app/extensions/Plugins`. The subdir is a subdirectory
@@ -71,6 +78,11 @@ DSSI       | dssi   | `DSSI_PATH`
 LADSPA     | ladspa | `LADSPA_PATH`
 VST (Linux)| lxvst  | `LXVST_PATH` or `VST_PATH`
 VST3       | vst3   | `VST3_PATH`
+
+**Note:** LV2 must have `$HOME/.lv2` in the LV2_PATH due to the VL2
+specification.  As for VST3, it's optional and you mileage may vary,
+but it allow installing VST3 locally and be visible from inside the
+flatpak sandbox.
 
 Runtime considerations
 ----------------------
