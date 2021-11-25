@@ -59,8 +59,8 @@ For DSSI, LADSPA, VST and VST3 it is the same change as above, see the
 table below for a summary.
 
 ```
-"--env=DSSI_PATH=/app/extensions/Plugins/lv2"
-"--env=LADSPA_PATH=/app/extensions/Plugins/lv2"
+"--env=DSSI_PATH=/app/extensions/Plugins/dssi"
+"--env=LADSPA_PATH=/app/extensions/Plugins/ladspa"
 "--env=VST_PATH=/app/extensions/Plugins/lxvst"
 "--env=VST3_PATH=$HOME/.vst3:/app/extensions/Plugins/vst3"
 ```
