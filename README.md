@@ -1,7 +1,7 @@
 Linux Audio base extension
 ==========================
 
-This is a base extension for Flatpak Linux audio plugins to allow
+This is a base package for Flatpak Linux audio plugins to allow
 building Linux audio plugins flatpaks.
 
 **This package only provides a definition of the extension points which
@@ -58,8 +58,9 @@ For LV2, it should be:
 LV2_PATH=$HOME/.lv2:/app/extensions/Plugins/lv2:/app/lib/lv2
 ```
 
+**Important:**
 Since `--env` in `--finish-args` doesn't do the variable substitution,
-this should be set in a wrapper shell script for the application.
+LV2_PATH should be set in a wrapper shell script for the application.
 
 For DSSI, LADSPA, VST and VST3 it is the same change as above, see the
 table below for a summary.
@@ -85,15 +86,21 @@ application host.
 | VST3       | vst3   | `VST3_PATH`
 
 **Note:** LV2 must have `$HOME/.lv2` in the LV2_PATH due to the LV2
-specification.  As for VST3, it's optional and you mileage may vary,
+specification.
+
+**Note 2:** For VST, sometime the variable is `VST_PATH` sometime it's
+`LXVST_PATH`. An older version of the standard used the directory
+`lxvst` (this is what Ardour 6 uses, as well as Helm). All plugins in
+the `21.08` branch now use `vst` with the older name as a fallback. It
+is encouraged to use it in apps too as it will disappear for `22.08`.
+
+**Note 3:** As for VST3, it's optional and you mileage may vary,
 but it allow installing VST3 locally in `~/.vst3` and be visible from
 inside the flatpak sandbox.
 
-**Note2:** For VST, sometime the variable is `VST_PATH` sometime it's
-`LXVST_PATH`. And older version of the used the directory `lxvst`. All
-plugins in `21.08` now use `vst` with the older name as a fallback.
 
-This is the general case, and application have varying degrees of conformance.
+This is the general case, and applications have varying degrees of
+adherence to standards.
 
 Runtime considerations
 ----------------------
@@ -102,7 +109,7 @@ Currently the base runtime is Freedesktop 21.08. Plugins and
 applications have to use the same runtime so you should consider this
 when upgrading the runtime on your application flatpak.
 
-As of writing 19.08 is deprecated.
+As of writing 20.08 and older are deprecated.
 
 When moving to a more recent Freedestkop, branches will have to be
 created to keep the older versions of the plugins available. As an
