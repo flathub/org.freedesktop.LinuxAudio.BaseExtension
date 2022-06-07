@@ -1,23 +1,14 @@
 {
   "id" : "org.freedesktop.LinuxAudio.BaseExtension",
-  "branch": "21.08",
   "runtime" : "org.freedesktop.Platform",
   "sdk" : "org.freedesktop.Sdk",
   "runtime-version" : "21.08",
-  "finish-args": [
-    /* extensions */
-    "--env=LV2_PATH=$HOME/.lv2:/app/extensions/Plugins/lv2",
-    "--env=DSSI_PATH=/app/extensions/Plugins/dssi",
-    "--env=LXVST_PATH=/app/extensions/Plugins/lxvst",
-    "--env=VST3_PATH=/app/extensions/Plugins/vst3",
-    "--env=LADSPA_PATH=/app/extensions/Plugins/ladspa"
-  ],
   "add-extensions": {
     "org.freedesktop.LinuxAudio.Plugins": {
       "directory": "extensions/Plugins",
       "version": "21.08",
       "add-ld-path": "lib",
-      "merge-dirs": "ladspa;dssi;lv2;lxvst;vst3",
+      "merge-dirs": "ladspa;dssi;lv2;vst;vst3",
       "subdirectories": true,
       "no-autodownload": true
     }
