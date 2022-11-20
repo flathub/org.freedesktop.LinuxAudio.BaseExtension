@@ -2,13 +2,13 @@
   "id" : "org.freedesktop.LinuxAudio.BaseExtension",
   "runtime" : "org.freedesktop.Platform",
   "sdk" : "org.freedesktop.Sdk",
-  "runtime-version" : "21.08",
+  "runtime-version" : "22.08",
   "add-extensions": {
     "org.freedesktop.LinuxAudio.Plugins": {
       "directory": "extensions/Plugins",
-      "version": "21.08",
+      "version": "22.08",
       "add-ld-path": "lib",
-      "merge-dirs": "ladspa;dssi;lv2;vst;vst3",
+      "merge-dirs": "ladspa;dssi;lv2;clap;vst;vst3",
       "subdirectories": true,
       "no-autodownload": true
     }
