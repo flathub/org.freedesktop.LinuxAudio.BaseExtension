@@ -16,6 +16,7 @@ It currently supports:
 - VST extension.
 - VST3
 - DSSI
+- CLAP
 
 All the above uses `org.freedesktop.LinuxAudio.Plugins` extension mount
 point.
@@ -37,9 +38,9 @@ Add the extension point for plugins:
 "add-extensions": {
   "org.freedesktop.LinuxAudio.Plugins": {
     "directory": "extensions/Plugins",
-    "version": "21.08",
+    "version": "22.08",
     "add-ld-path": "lib",
-    "merge-dirs": "ladspa;dssi;lv2;vst;vst3",
+    "merge-dirs": "ladspa;dssi;lv2;clap;vst;vst3",
     "subdirectories": true,
     "no-autodownload": true
   }
@@ -105,7 +106,7 @@ adherence to standards.
 Runtime considerations
 ----------------------
 
-Currently the base runtime is Freedesktop 21.08. Plugins and
+Currently the base runtime is Freedesktop 22.08. Plugins and
 applications have to use the same runtime so you should consider this
 when upgrading the runtime on your application flatpak.
 
