@@ -38,7 +38,7 @@ Add the extension point for plugins:
 "add-extensions": {
   "org.freedesktop.LinuxAudio.Plugins": {
     "directory": "extensions/Plugins",
-    "version": "22.08",
+    "version": "23.08",
     "add-ld-path": "lib",
     "merge-dirs": "ladspa;dssi;lv2;clap;vst;vst3",
     "subdirectories": true,
@@ -106,11 +106,11 @@ adherence to standards.
 Runtime considerations
 ----------------------
 
-Currently the base runtime is Freedesktop 22.08. Plugins and
+Currently the base runtime is Freedesktop 23.08. Plugins and
 applications have to use the same runtime so you should consider this
 when upgrading the runtime on your application flatpak.
 
-As of writing 20.08 and older are deprecated.
+As of writing 21.08 and older are deprecated.
 
 When moving to a more recent Freedestkop, branches will have to be
 created to keep the older versions of the plugins available. As an
