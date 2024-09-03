@@ -18,7 +18,8 @@
       "name": "polish",
       "buildsystem": "simple",
       "build-commands": [
-        "install -d /app/extensions/Plugins"
+          "install -d /app/share",
+          "install -d /app/extensions/Plugins"
       ]
     }
   ]
